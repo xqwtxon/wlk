@@ -1,5 +1,9 @@
 @echo off
 
+mode con: cols=70 lines=35
+
+TITLE Windows License Keys: v1.0.0
+
 :: BatchGotAdmin
     IF "%PROCESSOR_ARCHITECTURE%" EQU "amd64" (
 >nul 2>&1 "%SYSTEMROOT%\SysWOW64\cacls.exe" "%SYSTEMROOT%\SysWOW64\config\system"
@@ -9,7 +13,6 @@
 
 REM --> If error flag set, we do not have admin.
 if '%errorlevel%' NEQ '0' (
-    echo Requesting administrative privileges...
     goto UACPrompt
 ) else ( goto gotAdmin )
 
@@ -26,9 +29,6 @@ if '%errorlevel%' NEQ '0' (
     pushd "%CD%"
     CD /D "%~dp0"
 
-mode con: cols=70 lines=35
-
-TITLE Windows License Keys: v1.0.0
 echo +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 echo.
 echo               !! Windows License Keys for your computer !!
@@ -57,7 +57,7 @@ echo Starting activating your Windows...
 cscript //nologo slmgr.vbs /ckms >nul
 cscript //nologo slmgr.vbs /upk >nul
 cscript //nologo slmgr.vbs /cpky >nul
-for /F "usebackq delims=" %%a in (`curl -sL https://raw.githubusercontent.com/xqwtxon/wlk/main/keys.txt --retry`) do (
+for /F "usebackq delims=" %%a in (`curl -sL https://raw.githubusercontent.com/xqwtxon/wlk/main/keys.txt --retry 20 --retry-delay 5`) do (
   cscript //nologo "C:\Windows\System32\slmgr.vbs" /ipk %%a
 )
 if %errorlevel%==1 goto select_server
@@ -103,7 +103,7 @@ if %i%==8 set KMS=kms8.MSGuides.com
 if %i%==9 set KMS=kms9.MSGuides.com 
 if %i%==0 goto cancel
 cscript //nologo slmgr.vbs /skms %KMS%:1688 >nul
-if %errorlevel%==1 goto error
+if %errorlevel%==1 goto done
 goto done
 
 :error

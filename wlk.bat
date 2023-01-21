@@ -2,7 +2,7 @@
 
 mode con: cols=70 lines=35
 
-TITLE Windows License Keys: v1.0.0
+TITLE Windows License Keys: v1.0.1
 
 :: BatchGotAdmin
     IF "%PROCESSOR_ARCHITECTURE%" EQU "amd64" (

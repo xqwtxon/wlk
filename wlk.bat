@@ -1,8 +1,6 @@
 @echo off
 
 :: BatchGotAdmin
-:-------------------------------------
-REM  --> Check for permissions
     IF "%PROCESSOR_ARCHITECTURE%" EQU "amd64" (
 >nul 2>&1 "%SYSTEMROOT%\SysWOW64\cacls.exe" "%SYSTEMROOT%\SysWOW64\config\system"
 ) ELSE (
@@ -27,7 +25,6 @@ if '%errorlevel%' NEQ '0' (
 :gotAdmin
     pushd "%CD%"
     CD /D "%~dp0"
-:-------------------------------------- 
 
 mode con: cols=70 lines=35
 

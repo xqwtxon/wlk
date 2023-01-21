@@ -48,6 +48,7 @@ del wlk-install.bat >nul
 
 :launch
 echo.
+echo Launching wlk.bat ...
 timeout /T 10 /NOBREAK>nul
 start wlk.bat
 del wlk-setup.bat >nul

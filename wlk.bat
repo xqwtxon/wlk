@@ -110,3 +110,4 @@ goto cancel
 echo.
 echo Cancelling wlk.bat ...
 timeout /T 10 /NOBREAK>nul
+exit 1

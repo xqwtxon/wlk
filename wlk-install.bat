@@ -43,32 +43,24 @@ echo.
 choice /C YN /N /M "Do you want to launch now [Y/N]? "
 if %errorlevel%==1 goto launch
 if %errorlevel%==2 goto cancel
-del wlk-setup.bat >nul
-del wlk-install.bat >nul
 
 :launch
 echo.
 echo Launching wlk.bat ...
 timeout /T 10 /NOBREAK>nul
 start wlk.bat
-del wlk-setup.bat >nul
-del wlk-install.bat >nul
-exit 0
+exit 1
 
 :report
 echo.
 echo Opening github issues on the browser ...
 start https://github.com/xqwtxon/wlk/issues
 timeout /T 10 /NOBREAK>nul
-del wlk-setup.bat >nul
-del wlk-install.bat >nul
 
 :cancel
 echo.
 echo Cancelling Installation ...
 timeout /T 10 /NOBREAK>nul
-del wlk-setup.bat >nul
-del wlk-install.bat >nul
 
 :error
 echo.

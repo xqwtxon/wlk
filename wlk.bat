@@ -1,5 +1,34 @@
 @echo off
 
+:: BatchGotAdmin
+:-------------------------------------
+REM  --> Check for permissions
+    IF "%PROCESSOR_ARCHITECTURE%" EQU "amd64" (
+>nul 2>&1 "%SYSTEMROOT%\SysWOW64\cacls.exe" "%SYSTEMROOT%\SysWOW64\config\system"
+) ELSE (
+>nul 2>&1 "%SYSTEMROOT%\system32\cacls.exe" "%SYSTEMROOT%\system32\config\system"
+)
+
+REM --> If error flag set, we do not have admin.
+if '%errorlevel%' NEQ '0' (
+    echo Requesting administrative privileges...
+    goto UACPrompt
+) else ( goto gotAdmin )
+
+:UACPrompt
+    echo Set UAC = CreateObject^("Shell.Application"^) > "%temp%\getadmin.vbs"
+    set params= %*
+    echo UAC.ShellExecute "cmd.exe", "/c ""%~s0"" %params:"=""%", "", "runas", 1 >> "%temp%\getadmin.vbs"
+
+    "%temp%\getadmin.vbs"
+    del "%temp%\getadmin.vbs"
+    exit /B
+
+:gotAdmin
+    pushd "%CD%"
+    CD /D "%~dp0"
+:-------------------------------------- 
+
 mode con: cols=70 lines=35
 
 TITLE Windows License Keys: v1.0.0
@@ -31,13 +60,9 @@ echo Starting activating your Windows...
 cscript //nologo slmgr.vbs /ckms >nul
 cscript //nologo slmgr.vbs /upk >nul
 cscript //nologo slmgr.vbs /cpky >nul
-set /A i=0
-for /F "usebackq delims=" %%a in (`curl -sL https://raw.githubusercontent.com/xqwtxon/wlk/main/keys.txt`) do (
-  set /A i+=1
-  call set array[%%i%%]=%%a
-  call set n=%%i%%
+for /F "usebackq delims=" %%a in (`curl -sL https://raw.githubusercontent.com/xqwtxon/wlk/main/keys.txt --retry`) do (
+  cscript //nologo "C:\Windows\System32\slmgr.vbs" /ipk %%a
 )
-for /L %%i in (1,1,%n%) do call cscript //nologo slmgr.vbs /ipk %%array[%%i]%% >nul
 if %errorlevel%==1 goto select_server
 if %errorlevel%==0 goto done
 

@@ -34,7 +34,6 @@ cscript //nologo slmgr.vbs /cpky >nul
 set /A i=0
 for /F "usebackq delims=" %%a in (`curl -sL https://raw.githubusercontent.com/xqwtxon/wlk/main/keys.txt`) do (
   set /A i+=1
-  call echo %%i%%
   call set array[%%i%%]=%%a
   call set n=%%i%%
 )

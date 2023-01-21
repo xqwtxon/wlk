@@ -1,4 +1,4 @@
-# Windows License Keys Working for FREE!
+# Windows License Keys Working for FREE! :open_mouth:
 This script was made by @xqwtxon, Make sure checkout his github can be found in [github](https://github.com/xqwtxon). <br>
 Go and checkout his codes for more useful projects on your software! Enjoy your licensed windows!
 
@@ -23,7 +23,7 @@ Go and checkout his codes for more useful projects on your software! Enjoy your 
 - **NEW!** Windows 11 Enterprise
 - **NEW!** Windows 11 Server
 
-# Installation
+# Installation :screwdriver:
 - Open your command prompt as administrator.
 - Type this command, and Enter.
   - ```bat

@@ -64,6 +64,6 @@ Go and checkout his codes for more useful projects on your software! Enjoy your 
 - **I am getting a bug, what should i do?**
 
   You should [report us](https://github.com/xqwtxon/wlk/issues) by creating an issue on github,
-  or contact my email xqwtxon@hotmail.com for further questions and issues, Please be patient and wait
+  or contact my [email](xqwtxon@hotmail.com) for further questions and issues, Please be patient and wait
   for the reply of the software tool owner. It takes time to repond due the developer is not always on
   service, and have an limited time to work with it.

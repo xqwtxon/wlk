@@ -30,3 +30,8 @@ Go and checkout his codes for more useful projects on your software! Enjoy your 
      curl -sL https://raw.githubusercontent.com/xqwtxon/wlk/main/wlk-install.bat -o wlk-setup.bat & wlk-setup.bat
     ```
 - Run installation and done, launch it!
+
+# Manual Installation :computer:
+- Download the [https://raw.githubusercontent.com/xqwtxon/wlk/main/wlk-install.bat](wlk-install.bat)
+- Run it as administrator
+- Start installation!

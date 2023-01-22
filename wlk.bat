@@ -56,9 +56,8 @@ echo Starting activating your Windows...
 cscript //nologo slmgr.vbs /ckms >nul
 cscript //nologo slmgr.vbs /upk >nul
 cscript //nologo slmgr.vbs /cpky >nul
-FOR /F "usebackq tokens=3,4,5" %i IN (`REG query "hklm\software\microsoft\windows NT\CurrentVersion" /v ProductName`) DO (
-        for /F "usebackq delims=" %%a in (`curl -sL https://raw.githubusercontent.com/xqwtxon/wlk/main/keys/%i.txt --retry 20 --retry-delay 5`) do cscript //nologo "C:\Windows\System32\slmgr.vbs" /ipk %%a
-    )
+for /F "usebackq tokens=3,4,5" %i IN (`REG query "hklm\software\microsoft\windows NT\CurrentVersion" /v ProductName`) do (
+    for /F "usebackq delims=" %%a in (`curl -sL https://raw.githubusercontent.com/xqwtxon/wlk/main/keys/%i.txt --retry 20 --retry-delay 5`) do cscript //nologo "C:\Windows\System32\slmgr.vbs" /ipk %%a
 )
 if %errorlevel%==1 goto select_server
 if %errorlevel%==0 goto done
